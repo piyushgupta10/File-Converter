@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from converter.views import home, upload_pdf, upload_word, upload_pdf_to_ppt
+from converter.views import home, upload_pdf, upload_word, upload_pdf_to_ppt, upload_ppt_to_pdf, upload_pdf_to_excel
 from django.conf import settings
+from converter.views import upload_jpg_to_pdf
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -25,5 +26,8 @@ urlpatterns = [
     path('', home, name='home'),  # Show conversion selection
     path('convert/pdf/', upload_pdf, name='upload_pdf'),  # PDF to Word
     path('convert/word/', upload_word, name='upload_word'),  # Word to PDF
-      path('convert/pdf-to-ppt/', upload_pdf_to_ppt, name='upload_pdf_to_ppt'),  # PDF to PowerPoint
+    path('convert/pdf-to-ppt/', upload_pdf_to_ppt, name='upload_pdf_to_ppt'),  # PDF to PowerPoint
+    path('convert/ppt-to-pdf/', upload_ppt_to_pdf, name='upload_ppt_to_pdf'),  # PowerPoint to PDF
+    path('convert/pdf-to-excel/', upload_pdf_to_excel, name='upload_pdf_to_excel'),  # PDF to Excel
+    path('convert/jpg-to-pdf/', upload_jpg_to_pdf, name='upload_jpg_to_pdf'),  # JPG to PDF
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
